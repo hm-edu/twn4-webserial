@@ -7,57 +7,14 @@ import {
 } from "@/web-serial-simple-protocol";
 
 import {
-  encryptKeyStore,
-  saveToLocalStorage,
   hexToKeyBytes,
   DesfireTokenSpec,
   DesfireKey,
 } from "@/key-crypto";
-import { buildFileContent, FileTemplate } from "@/desfire-template";
 import { useEffect, useRef, useState } from "react";
-
-interface Address {
-  street: string;
-  city: string;
-  postalCode: string;
-  country: string;
-}
-
-interface PersonalData {
-  firstName: string;
-  lastName: string;
-  address?: Address;
-}
-
-interface User {
-  bayzeitId: string;
-  ricohId: string;
-  personalData: PersonalData;
-}
 
 export default function Home() {
   const addMessage = (msgs: string[], msg: string): string[] => [...msgs, msg];
-
-  const userFileTemplate: FileTemplate = {
-    name: "user-data",
-    fields: [
-      {
-        path: "personalData.firstName",
-        length: 16,
-        encoding: "utf8",
-        pad: " ",
-      },
-      { path: "personalData.lastName", length: 16, encoding: "utf8", pad: " " },
-      {
-        path: "personalData.address.street",
-        length: 32,
-        encoding: "utf8",
-        pad: " ",
-      },
-      { path: "bayzeitId", length: 16, encoding: "utf8", pad: " " },
-      { path: "ricohId", length: 16, encoding: "utf8", pad: " " },
-    ],
-  };
 
   const baseKeySettings: DesfireKey = {
     kid: 0,
@@ -138,21 +95,6 @@ export default function Home() {
     } catch {
       return false;
     }
-  };
-
-  const a: User = {
-    bayzeitId: "Test",
-    ricohId: "Test 1",
-    personalData: {
-      firstName: "Max",
-      lastName: "Musterfrau",
-      address: {
-        street: "Musterstrasse 1",
-        city: "Musterstadt",
-        postalCode: "12345",
-        country: "Germany",
-      },
-    },
   };
 
   const isHmToken = async (
@@ -444,7 +386,7 @@ export default function Home() {
       );
     }
     if (await isHmToken(protocol, keyspec.piccMasterKey.keyHex)) {
-      const resp = await protocol.desfireChangeKey({
+      await protocol.desfireChangeKey({
         cryptoEnv: 0x00,
         keyNo: 0x00,
         newKey: hexToKeyBytes("00000000000000000000000000000000"),
