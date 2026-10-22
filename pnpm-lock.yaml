@@ -20,7 +20,7 @@ importers:
     devDependencies:
       '@types/dom-serial':
         specifier: ^1.0.6
-        version: 1.0.6
+        version: 1.0.7
       '@types/node':
         specifier: ^24.0.0
         version: 24.19.2
@@ -470,8 +470,8 @@ packages:
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
 
-  '@types/dom-serial@1.0.6':
-    resolution: {integrity: sha512-eUHKbc6mdMgMm75/oBLocs3wkOQkPQ/oNCT+b5OgUT6mLgIvDTp3wCCE9tYZNvDPPh6Cj9lVg2IguWfS/mDrrQ==}
+  '@types/dom-serial@1.0.7':
+    resolution: {integrity: sha512-dxO2/otl3HP7YCK6LBf94WnI7qOusZV02RGAWnnpR0ENY85iM3RzH2poUJpZiOeNZRxyguMZnwucYMZ2Xtr+TQ==}
 
   '@types/esrecurse@4.3.1':
     resolution: {integrity: sha512-xJBAbDifo5hpffDBuHl0Y8ywswbiAp/Wi7Y/GtAgSlZyIABppyurxVueOPE8LUQOxdlgi6Zqce7uoEpqNTeiUw==}
@@ -2288,7 +2288,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@types/dom-serial@1.0.6': {}
+  '@types/dom-serial@1.0.7': {}
 
   '@types/esrecurse@4.3.1': {}
 
